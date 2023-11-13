@@ -22,10 +22,13 @@ Room::~Room() {
 
 //get methods:
 char* Room::getTitle(){
+  return title;
 }
 char* Room::getDescription();{
+  return description;
 }
 vector<struct* item> Room::getItems(); {
+  return items;
 }
 
 //set methods:
