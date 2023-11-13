@@ -8,9 +8,16 @@
 using namespace std:
 
 Room::Room(char[50] theTitle, char[200] theDescription, vector<struct* item> theItems) {
+  strcpy(title, theTitle);
+  strcpy(description, theDescription); //want to copy so I don't set two char* equal to each other (gave me errors in Classes project)
+  items = theItems;
 } //constructor
 
 Room::~Room() {
+  delete[] title;
+  delete[] description; //delete all the pointers
+  delete theItems;//not too sure about this structure
+
 } //destructor
 
 //get methods:
