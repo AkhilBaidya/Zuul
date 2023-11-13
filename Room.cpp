@@ -33,9 +33,12 @@ vector<struct* item> Room::getItems(); {
 
 //set methods:
 void Room::setTitle(char[50] newTitle){
+  strcpy(title, newTitle); //remember to use strcpy! not = (that caused me errors in Classes, with char* = char*)
 }
 void Room::setDescription(char[200] newDescription){
+  strcpy(description, newDescription);
 }
 void Room::setItems(vector<struct* item> newItems){
+  items = newItems; //?
 }
  
