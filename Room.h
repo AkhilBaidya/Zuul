@@ -1,4 +1,4 @@
-//Room class:
+//Room class: has title, description, inventory  
 
 #include <iostream>
 #include <cstring>
@@ -10,8 +10,17 @@ class Room {
 
  public:
 
+  //constructor:
+  Room(char[50] theTitle, char[200] theDescription, vector<struct* item> theItems);
 
- protected:
+  //deconstructor:
+  ~Room();
 
+
+ protected: //the fields
+
+  char* title;
+  char* description;
+  vector<struct* item> items;
 
 };
