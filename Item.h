@@ -10,7 +10,7 @@ class Item {
 
  public:
 
-  Item(char[50] theTitle, char[200] theDescription); //constructor
+  Item(char theTitle[50], char theDescription[200]); //constructor
   ~Item(); //destructor
 
   //get methods:
@@ -18,11 +18,10 @@ class Item {
   char* getDescription();
 
   //set methods:
-  void setTitle(char[50] newTitle);
-  void setDescription(char[200] newDescription);
+  void setTitle(char newTitle[50]);
+  void setDescription(char newDescription[200]);
 
  protected: //fields unique to an item
   char* title;
   char* description; 
-
 };
