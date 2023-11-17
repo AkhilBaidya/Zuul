@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Room::Room(char[50] theTitle, char[200] theDescription, vector<Item*> theItems, vector<char*> theExits) {
+Room::Room(char theTitle[50], char theDescription[200], vector<Item*> theItems, vector<char*> theExits) {
   strcpy(title, theTitle);
   strcpy(description, theDescription); //want to copy so I don't set two char* equal to each other (gave me errors in Classes project)
   items = theItems;
@@ -17,9 +17,7 @@ Room::Room(char[50] theTitle, char[200] theDescription, vector<Item*> theItems, 
 Room::~Room() {
   delete[] title;
   delete[] description; //delete all the pointers
-  delete items;//not too sure about this structure
-  delete exits;
-
+  
 } //destructor
 
 //get methods:
@@ -37,10 +35,10 @@ vector<char*> Room::getExits() {
 }
 
 //set methods:
-void Room::setTitle(char[50] newTitle){
+void Room::setTitle(char newTitle[50]){
   strcpy(title, newTitle); //remember to use strcpy! not = (that caused me errors in Classes, with char* = char*)
 }
-void Room::setDescription(char[200] newDescription){
+void Room::setDescription(char newDescription[200]){
   strcpy(description, newDescription);
 }
 void Room::setItems(vector<Item*> newItems){
