@@ -5,18 +5,20 @@
 #include <vector>
 #include "Room.h"
 
-using namespace std:
+using namespace std;
 
-Room::Room(char[50] theTitle, char[200] theDescription, vector<struct* item> theItems) {
+Room::Room(char[50] theTitle, char[200] theDescription, vector<Item*> theItems, vector<char*> theExits) {
   strcpy(title, theTitle);
   strcpy(description, theDescription); //want to copy so I don't set two char* equal to each other (gave me errors in Classes project)
   items = theItems;
+  exits = theExits;
 } //constructor
 
 Room::~Room() {
   delete[] title;
   delete[] description; //delete all the pointers
-  delete theItems;//not too sure about this structure
+  delete items;//not too sure about this structure
+  delete exits;
 
 } //destructor
 
@@ -24,11 +26,14 @@ Room::~Room() {
 char* Room::getTitle(){
   return title;
 }
-char* Room::getDescription();{
+char* Room::getDescription() {
   return description;
 }
-vector<struct* item> Room::getItems(); {
+vector<Item*> Room::getItems() {
   return items;
+}
+vector<char*> Room::getExits() {
+  return exits;
 }
 
 //set methods:
@@ -38,7 +43,10 @@ void Room::setTitle(char[50] newTitle){
 void Room::setDescription(char[200] newDescription){
   strcpy(description, newDescription);
 }
-void Room::setItems(vector<struct* item> newItems){
+void Room::setItems(vector<Item*> newItems){
   items = newItems; //?
+}
+void Room::setExits(vector<char*> newExits){
+  exits = newExits;
 }
  
