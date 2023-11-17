@@ -4,14 +4,24 @@
 #include <cstring>
 #include <vector>
 
-using namespace std:
+using namespace std;
 
 class Room {
 
- public:
+  //advice from Kevin in recognizing that including a struct defintion in this header will also
+  //define the struct in all files that include this header
+
+  struct Item {
+
+    char itemTitle[50];
+    char itemDes[200];
+    
+  };
+
+public:
 
   //constructor:
-  Room(char[50] theTitle, char[200] theDescription, vector<struct* item> theItems);
+  Room(char theTitle[50], char theDescription[200], vector<> theItems);
 
   //deconstructor:
   ~Room();
@@ -22,8 +32,8 @@ class Room {
   vector<struct* item> getItems();
 
   //set methods:
-  void setTitle(char[50] newTitle);
-  void setDescription(char[200] newDescription);
+  void setTitle(char newTitle[50]);
+  void setDescription(char newDescription[200]);
   void setItems(vector<struct* item> newItems);
   
  protected: //the fields
