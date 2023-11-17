@@ -10,8 +10,11 @@ class Item {
 
  public:
 
+  Item(char[50] theTitle, char[200] theDescription); //constructor
+  ~Item(); //destructor
 
- protected:
-
+ protected: //fields unique to an item
+  char* title;
+  char* description; 
 
 };
