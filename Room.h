@@ -21,7 +21,7 @@ class Room {
 public:
 
   //constructor:
-  Room(char theTitle[50], char theDescription[200], vector<> theItems);
+  Room(char theTitle[50], char theDescription[200], vector<Item*> theItems, vector<char*> theExits);
 
   //deconstructor:
   ~Room();
@@ -29,17 +29,20 @@ public:
   //get methods:
   char* getTitle();
   char* getDescription();
-  vector<struct* item> getItems();
+  vector<Item*> getItems();
+  vector<char*> getExits();
 
   //set methods:
   void setTitle(char newTitle[50]);
   void setDescription(char newDescription[200]);
-  void setItems(vector<struct* item> newItems);
+  void setItems(vector<Item*> newItems);
+  void setExits(vector<char*> newExits);
   
  protected: //the fields
 
   char* title;
   char* description;
-  vector<struct* item> items;
+  vector<Item*> items;
+  vector<char*> exits;
 
 };
