@@ -6,10 +6,6 @@
 
 using namespace std;
 
-class Room {
-
-  //advice from Kevin in recognizing that including a struct defintion in this header will also
-  //define the struct in all files that include this header
 
   struct Item {
 
@@ -17,6 +13,11 @@ class Room {
     char itemDes[200];
     
   };
+
+class Room {
+
+  //advice from Kevin in recognizing that including a struct defintion in this header will also
+  //define the struct in all files that include this header
 
 public:
 
