@@ -1,4 +1,4 @@
-//Room class: has title, description, inventory  
+//Room class: has title, description, items, and map of exits   
 
 #include <iostream>
 #include <cstring>
@@ -22,7 +22,7 @@ class Room {
 public:
 
   //constructor:
-  Room(char theTitle[50], char theDescription[200], vector<Item*> theItems, vector<char*> theExits);
+  Room(char theTitle[50], char theDescription[200], vector<Item*> theItems); //cannot construct room with map of other rooms immediately
 
   //deconstructor:
   ~Room();
@@ -31,19 +31,19 @@ public:
   char* getTitle();
   char* getDescription();
   vector<Item*> getItems();
-  vector<char*> getExits();
+  map<char*, Room> getExits(); //help from Mr. Galbraith for idea of making two inputs into the map a char (the direction) and another Room
 
   //set methods:
   void setTitle(char newTitle[50]);
   void setDescription(char newDescription[200]);
   void setItems(vector<Item*> newItems);
-  void setExits(vector<char*> newExits);
+  void setExits(map<char*, Room> newExits);
   
  protected: //the fields
 
   char* title;
   char* description;
   vector<Item*> items;
-  vector<char*> exits;
+  map<char*, Room> exits; //https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/ (used this source for syntax for instantiating a map object, from GeeksforGeeks.org
 
 };
