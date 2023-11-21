@@ -8,11 +8,16 @@
 
 using namespace std;
 
-void createWorld();
-void roomDescription(Room &currentRoom);
+void createWorld(vector<Room*> world);
+void roomDescription(Room* &currentRoom);
 
 int main(){
+
+  vector<Room*> world;
+  vector<Item*> inventory;
+  createWorld(world);
   
+  /*
   char title[50] = "Home";
   char description[200] = "Pretty nice here";
 
@@ -26,16 +31,33 @@ int main(){
   char* north = new char[10];
   strcpy(north, "NORTH");
   exits.push_back(north);
-  */
   
   Room* bob = new Room(title, description, items);
   cout << bob -> getDescription() << endl;
-  return 0;
+  return 0; */
 }
 
 //this will create all the rooms
-void createWorld() {
+void createWorld(vector<Room*> &world) {
+  //need at least 15 rooms:
+
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
+  Room* room1 = new Room("title", "description");
 }
 
-void roomDescription(Room &currentRoom) {
+void roomDescription(Room* &currentRoom) {
 }
