@@ -3,12 +3,16 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
+#include <map>
 #include "Room.h"
 
 using namespace std;
 
-int main(){
+void createWorld();
+void roomDescription(Room &currentRoom);
 
+int main(){
+  
   char title[50] = "Home";
   char description[200] = "Pretty nice here";
 
@@ -27,4 +31,11 @@ int main(){
   Room* bob = new Room(title, description, items);
   cout << bob -> getDescription() << endl;
   return 0;
+}
+
+//this will create all the rooms
+void createWorld() {
+}
+
+void roomDescription(Room &currentRoom) {
 }
