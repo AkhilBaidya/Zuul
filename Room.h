@@ -24,7 +24,7 @@ class Room {
 public:
 
   //constructor:
-  Room(char theTitle[50], char theDescription[200], vector<Item*> theItems); //cannot construct room with map of other rooms immediately
+  Room(char theTitle[50], char theDescription[200]); //cannot construct room with map of other rooms immediately (setting items will also not be done in construction of object)
 
   //deconstructor:
   ~Room();
