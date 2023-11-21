@@ -18,12 +18,13 @@ int main(){
   strcpy(Bob -> itemDes, "Shines brilliantly");
   items.push_back(Bob);
 
-  vector<char*> exits;
+  /*vector<char*> exits;
   char* north = new char[10];
   strcpy(north, "NORTH");
   exits.push_back(north);
+  */
   
-  Room(title, description, items, exits);
-  
+  Room* bob = new Room(title, description, items);
+  cout << bob -> getDescription() << endl;
   return 0;
 }
