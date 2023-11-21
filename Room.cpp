@@ -1,4 +1,4 @@
-//Room class: has title, description, inventory  
+//Room class: has title, description, items and map of exits  
 
 #include <iostream>
 #include <cstring>
@@ -7,11 +7,11 @@
 
 using namespace std;
 
-Room::Room(char theTitle[50], char theDescription[200], vector<Item*> theItems, vector<char*> theExits) {
+Room::Room(char theTitle[50], char theDescription[200], vector<Item*> theItems) {
   strcpy(title, theTitle);
   strcpy(description, theDescription); //want to copy so I don't set two char* equal to each other (gave me errors in Classes project)
   items = theItems;
-  exits = theExits;
+  map<char*, Room> exits = new map<char*, Room>; 
 } //constructor
 
 Room::~Room() {
@@ -30,7 +30,7 @@ char* Room::getDescription() {
 vector<Item*> Room::getItems() {
   return items;
 }
-vector<char*> Room::getExits() {
+map<char*, Room> Room::getExits() {
   return exits;
 }
 
@@ -44,7 +44,7 @@ void Room::setDescription(char newDescription[200]){
 void Room::setItems(vector<Item*> newItems){
   items = newItems; //?
 }
-void Room::setExits(vector<char*> newExits){
+void Room::setExits(map<char*, Room> newExits){
   exits = newExits;
 }
  
