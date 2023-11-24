@@ -131,6 +131,42 @@ void createWorld(vector<Room*> &world) {
   Room* song = new Room(title15, des15);
   world.push_back(song);
 
+  //the 5 items:
+
+  //name:
+  Item* name;
+  char n1[50] = "A Name";
+  char itemDes1[200] "______. Remember a name that once belonged to you";
+  strcpy(name.itemTitle, n1);
+  strcpy(name.itemDes,itemDes1);
+
+  //knowledge:
+  Item* knowledge;
+  char n2[50] = "Knowledge";
+  char itemDes2[200] = "1+1 = 2. Remember eyes to see the world with.";
+  strcpy(knowledge.itemTitle, n2);
+  strcpy(knowledge.itemDes, itemDes2);
+
+  //true mirror:
+  Item* mirror;
+  char n3[50] = "A True Mirror?";
+  char itemDes3[200] = "Unblemished and revealing. You see your eyes staring back. Remember your appearance.";
+  strcpy(mirror.itemTitle, n3);
+  strcpy(mirror.itemDes, itemDes3);
+
+  //a crown:
+  Item* crown;
+  char n4[50] = "A Crown";
+  char itemDes4[200] = "Remember your accomplishments";
+  strcpy(crown.itemTitle, n4);
+  strcpy(crown.itemDes, itemDes4);
+
+  //rotten apple:
+  Item* apple;
+  char n5[50] = "Rotten Apple";
+  char itemDes5[200] = "Get rid of it. Get rid of it. Get rid of it. Get rid of it.";
+  strcpy(apple.itemTitle, n5);
+  strcpy(apple.itemDes, itemDes5);
 
   //Adding room connections: referred to this for syntax of adding to map - https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/
   char d1[10] = "NORTH";
