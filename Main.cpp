@@ -90,11 +90,30 @@ void createWorld(vector<Room*> &world) {
   char des10[200] = "Stains of red, blue, and green dance on a single canvas at the center of the room."; 
   Room* room10 = new Room(title10, des10);
 
-  Room* room11 = new Room("title", "description");
-  Room* room12 = new Room("title", "description");
-  Room* room13 = new Room("title", "description");
-  Room* room14 = new Room("title", "description");
-  Room* room15 = new Room("title", "description");
+  //Room 11:
+  char title11[50] = "Hallway 1 [Tampered Photos]";
+  char des11[200] = "Photos cover either side of the hallway. Their faces are unrecognizable, burned away";
+  Room* hall1 = new Room(title11, des11);
+
+  //Room 12:
+  char title12[50] = "Hallway 2";
+  char des12[200] = "Vases and intricate pottery sit on the ceiling and ignore gravity. Wait...what was gravity again?";
+  Room* hall2 = new Room(title12, des12);
+
+  //Room 13:
+  char title13[50] = "Hallway 3 [Tampered Mirrors]";
+  char des13[200] = "Mirrors decorate every angle of this hall section. Alas, they all seem to reflect nothing.";
+  Room* hall3 = new Room(title13, des13);
+
+  //Room 14:
+  char title14[50] = "Warden's Room";
+  char des14[200] = "Your chest tightens and your breath comes out in small puffs. A desk full of paperwork sits in the middle of the room.";
+  Room* warden = new Room(title14, des14);
+
+  //Room 15:
+  char title15[50] = "Room of Song";
+  char des15[200] = "There's something soothing about this room. A gentle lullaby washes over you as you sink deeper into the serene blue of the room walls";
+  Room* song = new Room(title15, des15);
 }
 
 void roomDescription(Room* &currentRoom) {
