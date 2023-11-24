@@ -180,13 +180,55 @@ void createWorld(vector<Room*> &world) {
   books -> setExits(e7);
   
   //Room 8:birth
+  map<char*, Room*> e8;
+  e8[d1] = injury;
+  birth -> setExits(e8);
+  
   //Room 9:injury
+  map<char*, Room*> e9;
+  e9[d1] = hall3;
+  e9[d3] = birth;
+  e9[d4] = books;
+  injury -> setExits(e9);
+  
   //Room 10:art
+  map<char*, Room*> e10;
+  e10[d2] = song;
+  e10[d3] = hall2;
+  art -> setExits(e10);
+  
   //Room 11:hall1
+  map<char*, Room*> e11;
+  e11[d2] = hall2;
+  e11[d4] = cell;
+  hall1 -> setExits(e11);
+  
   //Room 12:hall2
+  map<char*, Room*> e12;
+  e12[d1] = art;
+  e12[d2] = hall3;
+  e12[d3] = books;
+  e12[d4] = hall1;
+  hall2 -> setExits(e12);
+  
   //Room 13:hall3
+  map<char*, Room*> e13;
+  e13[d1] = song;
+  e13[d2] = warden;
+  e13[d3] = injury;
+  e13[d4] = hall2;
+  hall3 -> setExits(e13);
+  
   //Room 14: warden
+  map<char*, Room*> e14;
+  e14[d4] = hall3;
+  warden -> setExits(e14);
+  
   //Room 15:song
+  map<char*, Room*> e15;
+  e15[d3] = hall3;
+  e15[d4] = art;
+  song -> setExits(e15);
 }
 
 void roomDescription(Room* &currentRoom) {
