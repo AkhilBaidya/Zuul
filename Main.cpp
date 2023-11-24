@@ -44,76 +44,115 @@ void createWorld(vector<Room*> &world) {
   char title1[50] = "Broken Cell [Home]";
   char des1[200] = "You are greeted with a familiar earthy scent. The bars of the cell are bent like fingers. They seem to point to the WEST."; 
   Room* cell = new Room(title1, des1);
+  world.push_back(cell);
   
   //Room 2:
   char title2[50] = "Oldest Room";
   char des2[200] = "Your eyes are blinded by white light. It's pretty empty here. Fog rolls over the walls like hair";
   Room* oldest = new Room(title2, des2);
-
+  world.push_back(oldest);
+  
   //Room 3:
   char title3[50] = "Winter";
   char des3[200] = "You shiver as you enter the room. A blanket of snow from nowhere falls at your feet";
   Room* winter = new Room(title3, des3);
-
+  world.push_back(winter);
+  
   //Room 4:
   char title4[50] = "Spring";
   char des4[200] = "Tiny flowers sprout from cracks in the walls.";
   Room* spring = new Room(title4, des4);
-
+  world.push_back(spring);
+  
   //Room 5:
   char title5[50] = "Summer";
   char des5[200] = "Your heart beats faster and louder. At the center of the room is a throne.";
   Room* summer = new Room(title5, des5);
-
+  world.push_back(summer);
+  
   //Room 6:
   char title6[50] = "Fall";
   char des6[200] = "Invisible things crunch beneath your feet. At the center of the room, you feel almost judged by the walls";
   Room* fall = new Room(title6, des6);
-
+  world.push_back(fall);
+  
   //Room 7:
   char title7[50] = "Room of Books";
   char des7[200] = "Tiny tables are scattered all over the room. Paper lies suspended in the air";
   Room* books = new Room(title7, des7);
+  world.push_back(books);
 
+  
   //Room 8:
   char title8[50] = "Room of Birth";
   char des8[200] = "'The wooden cradle to your left swings unattended and unoccupied. Creaks resound through the room";
   Room* birth = new Room(title8,des8);
-
+  world.push_back(birth);
+  
   //Room 9:
   char title9[50] = "Room of Injury";
   char des9[200] = "Ouch! The floor surface is jagged and hungry, here. The walls curve inwards. It feels like  you are in a cave";
   Room* injury = new Room(title9, des9);
+  world.push_back(injury);
 
   //Room 10:
   char title10[50] = "Room of Art";
   char des10[200] = "Stains of red, blue, and green dance on a single canvas at the center of the room."; 
-  Room* room10 = new Room(title10, des10);
-
+  Room* art = new Room(title10, des10);
+  world.push_back(art);
+  
   //Room 11:
   char title11[50] = "Hallway 1 [Tampered Photos]";
   char des11[200] = "Photos cover either side of the hallway. Their faces are unrecognizable, burned away";
   Room* hall1 = new Room(title11, des11);
-
+  world.push_back(hall1);
+  
   //Room 12:
   char title12[50] = "Hallway 2";
   char des12[200] = "Vases and intricate pottery sit on the ceiling and ignore gravity. Wait...what was gravity again?";
   Room* hall2 = new Room(title12, des12);
-
+  world.push_back(hall2);
+  
   //Room 13:
   char title13[50] = "Hallway 3 [Tampered Mirrors]";
   char des13[200] = "Mirrors decorate every angle of this hall section. Alas, they all seem to reflect nothing.";
   Room* hall3 = new Room(title13, des13);
-
+  world.push_back(hall3);
+  
   //Room 14:
   char title14[50] = "Warden's Room";
   char des14[200] = "Your chest tightens and your breath comes out in small puffs. A desk full of paperwork sits in the middle of the room.";
   Room* warden = new Room(title14, des14);
-
+  world.push_back(warden);
+  
   //Room 15:
   char title15[50] = "Room of Song";
   char des15[200] = "There's something soothing about this room. A gentle lullaby washes over you as you sink deeper into the serene blue of the room walls";
   Room* song = new Room(title15, des15);
+  world.push_back(song);
+
+
+  //Adding room connections:
+  char d1[10] = "NORTH";
+  char d2[10] = "EAST";
+  char d3[10] = "SOUTH";
+  char d4[10] = "WEST";
+  
+  //Room 1:cell
+  //Room 2:oldest
+  //Room 3: winter
+  //Room 4:spring
+  //Room 5:summer
+  //Room 6:fall
+  //Room 7:books
+  //Room 8:birth
+  //Room 9:injury
+  //Room 10:art
+  //Room 11:hall1
+  //Room 12:hall2
+  //Room 13:hall3
+  //Room 14: warden
+  //Room 15:song
 }
 
 void roomDescription(Room* &currentRoom) {
