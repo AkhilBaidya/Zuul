@@ -191,7 +191,8 @@ void createWorld(vector<Room*> &world) {
   map<char*, Room*> e3;
   e3[d3] = fall;
   winter -> setExits(e3);
-  
+  winter -> setItems(winter -> getItems().push_back(apple));
+		     
   //Room 4: spring
   map<char*, Room*> e4;
   e4[d1] = cell;
@@ -202,6 +203,7 @@ void createWorld(vector<Room*> &world) {
   map<char*, Room*> e5;
   e5[d1] = spring;
   summer -> setExits(e5);
+  summer -> setItems(summer -> getItems().push_back(crown));
   
   //Room 6:fall
   map<char*, Room*> e6;
@@ -214,11 +216,13 @@ void createWorld(vector<Room*> &world) {
   e7[d1] = hall2;
   e7[d2] = injury;
   books -> setExits(e7);
+  books -> setItems(books -> getItems().push_back(knowledge));
   
   //Room 8:birth
   map<char*, Room*> e8;
   e8[d1] = injury;
   birth -> setExits(e8);
+  birth -> setItems(birth -> getItems().push_back(name));
   
   //Room 9:injury
   map<char*, Room*> e9;
@@ -259,6 +263,7 @@ void createWorld(vector<Room*> &world) {
   map<char*, Room*> e14;
   e14[d4] = hall3;
   warden -> setExits(e14);
+  warden -> setItems(warden -> getItems().push_back(mirror));
   
   //Room 15:song
   map<char*, Room*> e15;
