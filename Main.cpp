@@ -65,12 +65,31 @@ void createWorld(vector<Room*> &world) {
   char des5[200] = "Your heart beats faster and louder. At the center of the room is a throne.";
   Room* summer = new Room(title5, des5);
 
- 
-  Room* room6 = new Room("title", "description");
-  Room* room7 = new Room("title", "description");
-  Room* room8 = new Room("title", "description");
-  Room* room9 = new Room("title", "description");
-  Room* room10 = new Room("title", "description");
+  //Room 6:
+  char title6[50] = "Fall";
+  char des6[200] = "Invisible things crunch beneath your feet. At the center of the room, you feel almost judged by the walls";
+  Room* fall = new Room(title6, des6);
+
+  //Room 7:
+  char title7[50] = "Room of Books";
+  char des7[200] = "Tiny tables are scattered all over the room. Paper lies suspended in the air";
+  Room* books = new Room(title7, des7);
+
+  //Room 8:
+  char title8[50] = "Room of Birth";
+  char des8[200] = "'The wooden cradle to your left swings unattended and unoccupied. Creaks resound through the room";
+  Room* birth = new Room(title8,des8);
+
+  //Room 9:
+  char title9[50] = "Room of Injury";
+  char des9[200] = "Ouch! The floor surface is jagged and hungry, here. The walls curve inwards. It feels like  you are in a cave";
+  Room* injury = new Room(title9, des9);
+
+  //Room 10:
+  char title10[50] = "Room of Art";
+  char des10[200] = "Stains of red, blue, and green dance on a single canvas at the center of the room."; 
+  Room* room10 = new Room(title10, des10);
+
   Room* room11 = new Room("title", "description");
   Room* room12 = new Room("title", "description");
   Room* room13 = new Room("title", "description");
