@@ -132,19 +132,53 @@ void createWorld(vector<Room*> &world) {
   world.push_back(song);
 
 
-  //Adding room connections:
+  //Adding room connections: referred to this for syntax of adding to map - https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/
   char d1[10] = "NORTH";
   char d2[10] = "EAST";
   char d3[10] = "SOUTH";
   char d4[10] = "WEST";
   
   //Room 1:cell
+  map<char*, Room*> e1;
+  e1[d4] = oldest;
+  e1[d2] = hall1;
+  e1[d1] = fall;
+  e1[d3] = spring;
+  cell -> setExits(e1);
+  
   //Room 2:oldest
+  map<char*, Room*> e2;
+  e2[d4] = cell;
+  oldest -> setExits(e2);
+  
   //Room 3: winter
-  //Room 4:spring
+  map<char*, Room*> e3;
+  e3[d3] = fall;
+  winter -> setExits(e3);
+  
+  //Room 4: spring
+  map<char*, Room*> e4;
+  e4[d1] = cell;
+  e4[d3] = summer;
+  spring -> setExits(e4);
+  
   //Room 5:summer
+  map<char*, Room*> e5;
+  e5[d1] = spring;
+  summer -> setExits(e5);
+  
   //Room 6:fall
+  map<char*, Room*> e6;
+  e6[d1] = winter;
+  e6[d3] = cell;
+  fall -> setExits(e6);
+  
   //Room 7:books
+  map<char*, Room*> e7;
+  e7[d1] = hall2;
+  e7[d2] = injury;
+  books -> setExits(e7);
+  
   //Room 8:birth
   //Room 9:injury
   //Room 10:art
