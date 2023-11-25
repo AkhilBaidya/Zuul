@@ -33,19 +33,21 @@ public:
   char* getTitle();
   char* getDescription();
   vector<Item*> getItems();
-  map<char*, Room> getExits(); //help from Mr. Galbraith for idea of making two inputs into the map a char (the direction) and another Room
+  map<char*, Room*> getExits(); //help from Mr. Galbraith for idea of making two inputs into the map a char (the direction) and another Room
 
   //set methods:
   void setTitle(char newTitle[50]);
   void setDescription(char newDescription[200]);
   void setItems(vector<Item*> newItems);
-  void setExits(map<char*, Room> newExits);
+  void addItem(Item* newItem);
+  Item* remItem(Item* theItem);
+  void setExits(map<char*, Room*> newExits);
   
  protected: //the fields
 
   char* title;
   char* description;
   vector<Item*> items;
-  map<char*, Room> exits; //https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/ (used this source for syntax for instantiating a map object, from GeeksforGeeks.org
+  map<char*, Room*> exits; //https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/ (used this source for syntax for instantiating a map object, from GeeksforGeeks.org
 
 };
