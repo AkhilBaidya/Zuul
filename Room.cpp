@@ -8,9 +8,10 @@
 
 using namespace std;
 
-Room::Room(char theTitle[50], char theDescription[200], vector<Item*> theItems) {
+Room::Room(char theTitle[50], char theDescription[200]) {
   title = new char[50];
   description = new char[200];
+  
   strcpy(title, theTitle);
   strcpy(description, theDescription); //want to copy so I don't set two char* equal to each other (gave me errors in Classes project) 
 } //constructor
@@ -31,7 +32,7 @@ char* Room::getDescription() {
 vector<Item*> Room::getItems() {
   return items;
 }
-map<char*, Room> Room::getExits() {
+map<char*, Room*> Room::getExits() {
   return exits;
 }
 
@@ -45,7 +46,27 @@ void Room::setDescription(char newDescription[200]){
 void Room::setItems(vector<Item*> newItems){
   items = newItems; //?
 }
-void Room::setExits(map<char*, Room> newExits){
+
+void Room::addItem(Item* newItem) {
+  items.push_back(newItem);
+}
+
+Item* Room::remItem(Item* theItem) {
+
+  int index = 0;
+  
+  for(vector<Item*>::iterator counter = items.begin(); counter != items.end(); counter++) {
+    
+    if (theItem == (*counter)) {
+      items.erase(items.begin() + index);
+    }
+    index++;
+  }
+  return theItem;
+  //referred to this for syntax of .erase - https://www.geeksforgeeks.org/vector-in-cpp-stl/
+}
+
+void Room::setExits(map<char*, Room*> newExits){
   exits = newExits;
 }
  
