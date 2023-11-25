@@ -30,7 +30,8 @@ int main(){
   while (playing) {
     
     roomDescription(currentRoom);
-
+    commanding = true;
+    
     while (commanding) {
       cout << "What would you like to do?" << endl;
       char command[20];
@@ -75,13 +76,21 @@ int main(){
 	cin >> whatDir;
 
 	goTo(currentRoom, whatDir);
+	commanding = false;
       }
-      
+
+      //quit
+      if (!strcmp("quit", command)) {
+
+	cout << "quitting" << endl;
+       
+	commanding = false;
+	playing = false;
+      }
     }
   }
   
-  roomDescription(currentRoom);
-  cout << "4" << endl;
+  cout << "Thanks for playing!" << endl;
   return 0;
 }
 
