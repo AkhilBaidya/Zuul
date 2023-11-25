@@ -56,6 +56,26 @@ int main(){
 
 	takeItem(currentRoom, inventory, whatItem);
       }
+
+      //place item
+      if (!strcmp("place", command)) {
+
+	char whatItem[20];
+	cout << "Place what?" << endl;
+	cin >> whatItem;
+
+	placeItem(currentRoom, inventory, whatItem);
+      }
+
+      //go to room
+      if (!strcmp("go", command)) {
+
+	char whatDir[20];
+	cout << "go where?" << endl;
+	cin >> whatDir;
+
+	goTo(currentRoom, whatDir);
+      }
       
     }
   }
