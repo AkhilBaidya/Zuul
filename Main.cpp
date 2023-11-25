@@ -18,14 +18,36 @@ int main(){
   vector<Room*> world;
   vector<Item*> inventory;
   Room* currentRoom;
-  cout << "1" << endl;
-  createWorld(world);
+  bool playing = true;
+  bool commanding = true;
+  
+  createWorld(world); //create the rooms at the beginning
 
-  cout << "2" << endl;
   //starting area: learned that referencing value in vector is same as erray:
   //https://www.geeksforgeeks.org/vector-in-cpp-stl/
-  currentRoom = world[0];
-  cout << "3" << endl;
+  currentRoom = world[0]; //start at the cell
+
+  while (playing) {
+    
+    roomDescription(currentRoom);
+
+    while (commanding) {
+      cout << "What would you like to do?" << endl;
+      char command[20];
+      cin >> command;
+
+      //print inventory
+      if (!strcmp("inventory", command)) {
+
+	for (vector<Item*>::iterator item = inventory.begin(); item != inventory.end(); item++) {
+	  cout << (*item) -> itemTitle << ", ";
+	}
+
+	cout << " " << endl;
+      }
+    }
+  }
+  
   roomDescription(currentRoom);
   cout << "4" << endl;
   return 0;
