@@ -11,17 +11,27 @@ using namespace std;
 void createWorld(vector<Room*> &world);
 void roomDescription(Room* &currentRoom);
 
+
 int main(){
   vector<Room*> world;
   vector<Item*> inventory;
+  Room* currentRoom;
+  cout << "1" << endl;
   createWorld(world);
 
+  cout << "2" << endl;
+  //starting area: learned that referencing value in vector is same as erray:
+  //https://www.geeksforgeeks.org/vector-in-cpp-stl/
+  currentRoom = world[0];
+  cout << "3" << endl;
+  roomDescription(currentRoom);
+  cout << "4" << endl;
   return 0;
 }
 
 //this will create all the rooms
 void createWorld(vector<Room*> &world) {
-  
+
   //Room 1:
   char title1[50] = "Broken Cell [Home]";
   char des1[200] = "You are greeted with a familiar earthy scent. The bars of the cell are bent like fingers. They seem to point to the WEST."; 
@@ -116,35 +126,35 @@ void createWorld(vector<Room*> &world) {
   //the 5 items:
 
   //name:
-  Item* name;
+  Item* name = new Item;
   char n1[50] = "A Name";
   char itemDes1[200] = "______. Remember a name that once belonged to you";
-  strcpy(name -> itemTitle, n1);
-  strcpy(name -> itemDes,itemDes1);
+  strcpy(name->itemTitle, n1);
+  strcpy(name->itemDes,itemDes1);
 
   //knowledge:
-  Item* knowledge;
+  Item* knowledge = new Item;
   char n2[50] = "Knowledge";
   char itemDes2[200] = "1+1 = 2. Remember eyes to see the world with.";
   strcpy(knowledge -> itemTitle, n2);
   strcpy(knowledge -> itemDes, itemDes2);
 
   //true mirror:
-  Item* mirror;
+  Item* mirror = new Item;
   char n3[50] = "A True Mirror?";
   char itemDes3[200] = "Unblemished and revealing. You see your eyes staring back. Remember your appearance.";
   strcpy(mirror -> itemTitle, n3);
   strcpy(mirror -> itemDes, itemDes3);
 
   //a crown:
-  Item* crown;
+  Item* crown = new Item;
   char n4[50] = "A Crown";
   char itemDes4[200] = "Remember your accomplishments";
   strcpy(crown -> itemTitle, n4);
   strcpy(crown -> itemDes, itemDes4);
 
   //rotten apple:
-  Item* apple;
+  Item* apple = new Item;
   char n5[50] = "Rotten Apple";
   char itemDes5[200] = "Get rid of it. Get rid of it. Get rid of it. Get rid of it.";
   strcpy(apple -> itemTitle, n5);
@@ -267,7 +277,7 @@ void roomDescription(Room* &currentRoom) {
   cout << "In the room, there are items: " << endl;
   vector<Item*> curItems = currentRoom -> getItems();
   for (vector<Item*>::iterator item = curItems.begin(); item != curItems.end(); item++) {
-    cout << (*item) < ", ";
+    cout << (*item) << ", ";
   }
 
   cout << " " << endl;
@@ -278,7 +288,7 @@ void roomDescription(Room* &currentRoom) {
 
   map<char*, Room*> curMap = currentRoom -> getExits();
 
-  for (map<char*, Room*>::iterator pair = curMap.begin(); pair != currMap.end(); pair++) {
+  for (map<char*, Room*>::iterator pair = curMap.begin(); pair != curMap.end(); pair++) {
     cout << pair -> first << ", ";
   }
   cout << " " << endl; 
