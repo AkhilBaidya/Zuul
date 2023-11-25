@@ -257,4 +257,29 @@ void createWorld(vector<Room*> &world) {
 }
 
 void roomDescription(Room* &currentRoom) {
+  //title:
+  cout << "Welcome to " << currentRoom -> getTitle() << endl;
+
+  //description:
+  cout << currentRoom -> getDescription() << endl;
+
+  //items:
+  cout << "In the room, there are items: " << endl;
+  vector<Item*> curItems = currentRoom -> getItems();
+  for (vector<Item*>::iterator item = curItems.begin(); item != curItems.end(); item++) {
+    cout << (*item) < ", ";
+  }
+
+  cout << " " << endl;
+  
+  //exits: referred to this https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/ for how to iterate through a map and get key values
+  
+  cout << "There are exits:" << endl;
+
+  map<char*, Room*> curMap = currentRoom -> getExits();
+
+  for (map<char*, Room*>::iterator pair = curMap.begin(); pair != currMap.end(); pair++) {
+    cout << pair -> first << ", ";
+  }
+  cout << " " << endl; 
 }
