@@ -381,5 +381,23 @@ void placeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]){
 
 void goTo(Room* &currentRoom, char direction[10]){
   map<char*, Room*> roomExits = currentRoom -> getExits();
-  currentRoom = roomExits[direction];
+
+  int isThere = 0;
+  
+  for (map<char*, Room*>::iterator object = roomExits.begin(); object != roomExits.end(); object++) {
+
+    if (!strcmp((*object)->first,direction)) {
+      isThere = 1;
+    }
+    
+  }
+
+  if (isThere == 0) {
+    cout << "There is no such exit here" << endl;
+  }
+  
+  else {
+    cout << "You move " << direction << endl;
+    currentRoom = roomExits[direction];
+  }
 }
