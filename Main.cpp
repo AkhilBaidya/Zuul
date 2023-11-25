@@ -10,7 +10,9 @@ using namespace std;
 
 void createWorld(vector<Room*> &world);
 void roomDescription(Room* &currentRoom);
-
+void takeItem(Room* &currentRoom, vector<Item*> &inventory, char itemTitle[50]);
+void placeItem(Room* &currentRoom, vector<Item*> &inventory, char itemTitle[50]);
+void goTo(Room* &currentRoom, char direction[10]);
 
 int main(){
   vector<Room*> world;
@@ -292,4 +294,11 @@ void roomDescription(Room* &currentRoom) {
     cout << pair -> first << ", ";
   }
   cout << " " << endl; 
+}
+
+void takeItem(Room* &currentRoom, vector<Item*> &inventory, char itemTitle[50]){
+}
+void placeItem(Room* &currentRoom, vector<Item*> &inventory, char itemTitle[50]){
+}
+void goTo(Room* &currentRoom, char direction[10]){
 }
