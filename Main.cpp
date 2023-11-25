@@ -318,9 +318,30 @@ void takeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]){
   }
   return;
 }
-void placeItem(Room* &currentRoom, vector<Item*> &inventory, char itemTitle[50]){
-
+void placeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]){
+  vector<Item*> roomItems = currentRoom -> getItems();
+  Item* theItem = new Item;
+  int thereis = 0;
+  int index = 0;
+  
+  for (vector<Item*>::iterator item = inventory.begin(); item != inventory.end(); item++) {
+    if (!strcmp((*item) -> itemTitle, itemName)) {
+      theItem = (*item);
+      thereis = 1;
+      inventory.erase(inventory.begin() + index);
+    }
+    index++;
+  }
+  if (thereis == 0) {
+    cout << "You don't have that item" << endl;
+    return
+  }
+  else {
+    currentRoom -> addItem(theItem);
+  }
+  return;
 }
+
 void goTo(Room* &currentRoom, char direction[10]){
 
 }
