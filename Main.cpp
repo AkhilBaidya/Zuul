@@ -8,38 +8,20 @@
 
 using namespace std;
 
-void createWorld(vector<Room*> world);
+void createWorld(vector<Room*> &world);
 void roomDescription(Room* &currentRoom);
 
 int main(){
-
   vector<Room*> world;
   vector<Item*> inventory;
   createWorld(world);
-  
-  /*
-  char title[50] = "Home";
-  char description[200] = "Pretty nice here";
 
-  vector<Item*> items;
-  Item* Bob = new Item;
-  strcpy(Bob -> itemTitle, "Cool orb");
-  strcpy(Bob -> itemDes, "Shines brilliantly");
-  items.push_back(Bob);
-
-  /*vector<char*> exits;
-  char* north = new char[10];
-  strcpy(north, "NORTH");
-  exits.push_back(north);
-  
-  Room* bob = new Room(title, description, items);
-  cout << bob -> getDescription() << endl;
-  return 0; */
+  return 0;
 }
 
 //this will create all the rooms
 void createWorld(vector<Room*> &world) {
-
+  
   //Room 1:
   char title1[50] = "Broken Cell [Home]";
   char des1[200] = "You are greeted with a familiar earthy scent. The bars of the cell are bent like fingers. They seem to point to the WEST."; 
@@ -136,37 +118,37 @@ void createWorld(vector<Room*> &world) {
   //name:
   Item* name;
   char n1[50] = "A Name";
-  char itemDes1[200] "______. Remember a name that once belonged to you";
-  strcpy(name.itemTitle, n1);
-  strcpy(name.itemDes,itemDes1);
+  char itemDes1[200] = "______. Remember a name that once belonged to you";
+  strcpy(name -> itemTitle, n1);
+  strcpy(name -> itemDes,itemDes1);
 
   //knowledge:
   Item* knowledge;
   char n2[50] = "Knowledge";
   char itemDes2[200] = "1+1 = 2. Remember eyes to see the world with.";
-  strcpy(knowledge.itemTitle, n2);
-  strcpy(knowledge.itemDes, itemDes2);
+  strcpy(knowledge -> itemTitle, n2);
+  strcpy(knowledge -> itemDes, itemDes2);
 
   //true mirror:
   Item* mirror;
   char n3[50] = "A True Mirror?";
   char itemDes3[200] = "Unblemished and revealing. You see your eyes staring back. Remember your appearance.";
-  strcpy(mirror.itemTitle, n3);
-  strcpy(mirror.itemDes, itemDes3);
+  strcpy(mirror -> itemTitle, n3);
+  strcpy(mirror -> itemDes, itemDes3);
 
   //a crown:
   Item* crown;
   char n4[50] = "A Crown";
   char itemDes4[200] = "Remember your accomplishments";
-  strcpy(crown.itemTitle, n4);
-  strcpy(crown.itemDes, itemDes4);
+  strcpy(crown -> itemTitle, n4);
+  strcpy(crown -> itemDes, itemDes4);
 
   //rotten apple:
   Item* apple;
   char n5[50] = "Rotten Apple";
   char itemDes5[200] = "Get rid of it. Get rid of it. Get rid of it. Get rid of it.";
-  strcpy(apple.itemTitle, n5);
-  strcpy(apple.itemDes, itemDes5);
+  strcpy(apple -> itemTitle, n5);
+  strcpy(apple -> itemDes, itemDes5);
 
   //Adding room connections: referred to this for syntax of adding to map - https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/
   char d1[10] = "NORTH";
@@ -191,7 +173,8 @@ void createWorld(vector<Room*> &world) {
   map<char*, Room*> e3;
   e3[d3] = fall;
   winter -> setExits(e3);
-  winter -> setItems(winter -> getItems().push_back(apple));
+  
+  winter -> addItem(apple);
 		     
   //Room 4: spring
   map<char*, Room*> e4;
@@ -203,7 +186,7 @@ void createWorld(vector<Room*> &world) {
   map<char*, Room*> e5;
   e5[d1] = spring;
   summer -> setExits(e5);
-  summer -> setItems(summer -> getItems().push_back(crown));
+  summer -> addItem(crown);
   
   //Room 6:fall
   map<char*, Room*> e6;
@@ -216,13 +199,13 @@ void createWorld(vector<Room*> &world) {
   e7[d1] = hall2;
   e7[d2] = injury;
   books -> setExits(e7);
-  books -> setItems(books -> getItems().push_back(knowledge));
+  books -> addItem(knowledge);
   
   //Room 8:birth
   map<char*, Room*> e8;
   e8[d1] = injury;
   birth -> setExits(e8);
-  birth -> setItems(birth -> getItems().push_back(name));
+  birth -> addItem(name);
   
   //Room 9:injury
   map<char*, Room*> e9;
@@ -263,13 +246,14 @@ void createWorld(vector<Room*> &world) {
   map<char*, Room*> e14;
   e14[d4] = hall3;
   warden -> setExits(e14);
-  warden -> setItems(warden -> getItems().push_back(mirror));
+  warden -> addItem(mirror);
   
   //Room 15:song
   map<char*, Room*> e15;
   e15[d3] = hall3;
   e15[d4] = art;
   song -> setExits(e15);
+  return;
 }
 
 void roomDescription(Room* &currentRoom) {
