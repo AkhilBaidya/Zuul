@@ -45,6 +45,18 @@ int main(){
 
 	cout << " " << endl;
       }
+
+
+      //take item
+      if (!strcmp("take", command)) {
+
+	char whatItem[20];
+	cout << "Take what?" << endl;
+	cin >> whatItem;
+
+	takeItem(currentRoom, inventory, whatItem);
+      }
+      
     }
   }
   
@@ -337,6 +349,8 @@ void takeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]){
   else {
     currentRoom -> remItem(theItem);
     inventory.push_back(theItem);
+
+    cout << "Took " << itemName << endl;
   }
   return;
 }
@@ -360,6 +374,7 @@ void placeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]){
   }
   else {
     currentRoom -> addItem(theItem);
+    cout << "Placed " << itemName << endl;
   }
   return;
 }
