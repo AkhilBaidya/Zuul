@@ -17,16 +17,15 @@ void goTo(Room* &currentRoom, char direction[10]);
 int main(){
   vector<Room*> world;
   vector<Item*> inventory;
-  char dummy[50] = "dummy";
-  char dummy2[200] = "gotem";
   bool playing = true;
   bool commanding = true;
 
   createWorld(world); //create the rooms at the beginning
-  roomDescription(world[0]);
+
+  
   //starting area: learned that referencing value in vector is same as erray:
   //https://www.geeksforgeeks.org/vector-in-cpp-stl/
-  Room* currentRoom = world[1]; //start at the cell
+  Room* currentRoom = world[0]; //start at the cell
   //roomDescription(world[1]);
   while (playing) {
     roomDescription(currentRoom);
@@ -192,7 +191,7 @@ void createWorld(vector<Room*> &world) {
 
   //name:
   Item* name = new Item;
-  char n1[50] = "A Name";
+  char n1[50] = "Name[Mine?]";
   char itemDes1[200] = "______. Remember a name that once belonged to you";
   strcpy(name->itemTitle, n1);
   strcpy(name->itemDes,itemDes1);
@@ -206,21 +205,21 @@ void createWorld(vector<Room*> &world) {
 
   //true mirror:
   Item* mirror = new Item;
-  char n3[50] = "A True Mirror?";
+  char n3[50] = "Mirror[True?]";
   char itemDes3[200] = "Unblemished and revealing. You see your eyes staring back. Remember your appearance.";
   strcpy(mirror -> itemTitle, n3);
   strcpy(mirror -> itemDes, itemDes3);
 
   //a crown:
   Item* crown = new Item;
-  char n4[50] = "A Crown";
+  char n4[50] = "Crown";
   char itemDes4[200] = "Remember your accomplishments";
   strcpy(crown -> itemTitle, n4);
   strcpy(crown -> itemDes, itemDes4);
 
   //rotten apple:
   Item* apple = new Item;
-  char n5[50] = "Rotten Apple";
+  char n5[50] = "Apple[Rotting]";
   char itemDes5[200] = "Get rid of it. Get rid of it. Get rid of it. Get rid of it.";
   strcpy(apple -> itemTitle, n5);
   strcpy(apple -> itemDes, itemDes5);
@@ -254,7 +253,7 @@ void createWorld(vector<Room*> &world) {
   e2[d4] = cell;
   oldest -> setExits(e2);*/
   map<int, Room*> e2;
-  e2[4] = cell;
+  e2[2] = cell;
   oldest -> setExits(e2);
 
   
@@ -428,7 +427,7 @@ void roomDescription(Room* &currentRoom) {
   cout << "In the room, there are items: " << endl;
   vector<Item*> curItems = currentRoom -> getItems();
   for (vector<Item*>::iterator item = curItems.begin(); item != curItems.end(); item++) {
-    cout << (*item) << ", ";
+    cout << (*item) -> itemTitle << ", ";
   }
 
   cout << " " << endl;
@@ -470,6 +469,7 @@ void takeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]){
     if (!strcmp((*item) -> itemTitle, itemName)) {
       theItem = (*item);
       thereis = 1;
+      cout << "found your item" << endl;
     }
   }
 
@@ -477,10 +477,14 @@ void takeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]){
     cout << "That item is not in the room" << endl;
   }
   else {
-    currentRoom -> remItem(theItem);
+    cout << "going to take item" << endl;
+    //currentRoom -> remItem(theItem);
+    currentRoom -> remItem(itemName);
+    cout << "removed item from room" << endl;
     inventory.push_back(theItem);
 
     cout << "Took " << itemName << endl;
+    cout << theItem -> itemDes << endl;
   }
 }
 void placeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]){
