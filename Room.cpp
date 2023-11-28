@@ -51,18 +51,31 @@ void Room::addItem(Item* newItem) {
   items.push_back(newItem);
 }
 
-Item* Room::remItem(Item* theItem) {
+void Room::remItem(char theItem[50]) {
 
   int index = 0;
+  int pos = 0;
   
   for(vector<Item*>::iterator counter = items.begin(); counter != items.end(); counter++) {
     
-    if (theItem == (*counter)) {
+    /*if (theItem == (*counter)) {
+      cout << index << endl;
       items.erase(items.begin() + index);
-    }
+      }*/
+
+    if (!strcmp(theItem, (*counter) -> itemTitle)) {
+      cout << "deleting at" << index << endl;
+      cout << "deleting " << (*counter) -> itemTitle << endl;
+      //items.erase(items.begin()+index);
+      pos = index;
+      cout << "did it" << endl;
+     }
+    cout << "turn ends" << endl;
     index++;
   }
-  return theItem;
+
+  items.erase(items.begin() + pos);
+  // return theItem;
   //referred to this for syntax of .erase - https://www.geeksforgeeks.org/vector-in-cpp-stl/
 }
 
