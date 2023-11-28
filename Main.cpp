@@ -17,18 +17,18 @@ void goTo(Room* &currentRoom, char direction[10]);
 int main(){
   vector<Room*> world;
   vector<Item*> inventory;
-  Room* currentRoom;
+  char dummy[50] = "dummy";
+  char dummy2[200] = "gotem";
   bool playing = true;
   bool commanding = true;
-  
-  createWorld(world); //create the rooms at the beginning
 
+  createWorld(world); //create the rooms at the beginning
+  roomDescription(world[0]);
   //starting area: learned that referencing value in vector is same as erray:
   //https://www.geeksforgeeks.org/vector-in-cpp-stl/
-  currentRoom = world[0]; //start at the cell
-
+  Room* currentRoom = world[1]; //start at the cell
+  //roomDescription(world[1]);
   while (playing) {
-    
     roomDescription(currentRoom);
     commanding = true;
     
@@ -96,7 +96,7 @@ int main(){
 
 //this will create all the rooms
 void createWorld(vector<Room*> &world) {
-
+  
   //Room 1:
   char title1[50] = "Broken Cell [Home]";
   char des1[200] = "You are greeted with a familiar earthy scent. The bars of the cell are bent like fingers. They seem to point to the WEST."; 
@@ -226,109 +226,195 @@ void createWorld(vector<Room*> &world) {
   strcpy(apple -> itemDes, itemDes5);
 
   //Adding room connections: referred to this for syntax of adding to map - https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/
+
+  /*
   char d1[10] = "NORTH";
   char d2[10] = "EAST";
   char d3[10] = "SOUTH";
   char d4[10] = "WEST";
+  */
   
   //Room 1:cell
-  map<char*, Room*> e1;
+  /*map<char*, Room*> e1;
   e1[d4] = oldest;
   e1[d2] = hall1;
   e1[d1] = fall;
   e1[d3] = spring;
+  cell -> setExits(e1);*/
+  map<int, Room*> e1;
+  e1[4] = oldest;
+  e1[2] = hall1;
+  e1[1] = fall;
+  e1[3] = spring;
   cell -> setExits(e1);
+
   
   //Room 2:oldest
-  map<char*, Room*> e2;
+  /*map<char*, Room*> e2;
   e2[d4] = cell;
+  oldest -> setExits(e2);*/
+  map<int, Room*> e2;
+  e2[4] = cell;
   oldest -> setExits(e2);
+
   
   //Room 3: winter
-  map<char*, Room*> e3;
+  /*map<char*, Room*> e3;
   e3[d3] = fall;
   winter -> setExits(e3);
   
+  winter -> addItem(apple);*/
+  map<int, Room*> e3;
+  e3[3] = fall;
+  winter -> setExits(e3);
   winter -> addItem(apple);
+  
 		     
   //Room 4: spring
-  map<char*, Room*> e4;
+  /*map<char*, Room*> e4;
   e4[d1] = cell;
   e4[d3] = summer;
+  spring -> setExits(e4);*/
+  map<int, Room*> e4;
+  e4[1] = cell;
+  e4[3] = summer;
   spring -> setExits(e4);
+
   
   //Room 5:summer
-  map<char*, Room*> e5;
+  /*map<char*, Room*> e5;
   e5[d1] = spring;
   summer -> setExits(e5);
+  summer -> addItem(crown);*/
+  map<int, Room*> e5;
+  e5[1] = spring;
+  summer -> setExits(e5);
   summer -> addItem(crown);
+
   
   //Room 6:fall
-  map<char*, Room*> e6;
+  /*map<char*, Room*> e6;
   e6[d1] = winter;
   e6[d3] = cell;
+  fall -> setExits(e6);*/
+  map<int, Room*> e6;
+  e6[1] = winter;
+  e6[3] = cell;
   fall -> setExits(e6);
+
   
   //Room 7:books
-  map<char*, Room*> e7;
+  /*map<char*, Room*> e7;
   e7[d1] = hall2;
   e7[d2] = injury;
   books -> setExits(e7);
+  books -> addItem(knowledge);*/
+  map<int, Room*> e7;
+  e7[1] = hall2;
+  e7[2] = injury;
+  books -> setExits(e7);
   books -> addItem(knowledge);
+
   
   //Room 8:birth
-  map<char*, Room*> e8;
+  /*map<char*, Room*> e8;
   e8[d1] = injury;
   birth -> setExits(e8);
+  birth -> addItem(name);*/
+  map<int, Room*> e8;
+  e8[1] = injury;
+  birth -> setExits(e8);
   birth -> addItem(name);
+
   
   //Room 9:injury
-  map<char*, Room*> e9;
+  /*map<char*, Room*> e9;
   e9[d1] = hall3;
   e9[d3] = birth;
   e9[d4] = books;
+  injury -> setExits(e9);*/
+  map<int, Room*> e9;
+  e9[1] = hall3;
+  e9[3] = birth;
+  e9[4] = books;
   injury -> setExits(e9);
+
   
   //Room 10:art
-  map<char*, Room*> e10;
+  /*map<char*, Room*> e10;
   e10[d2] = song;
   e10[d3] = hall2;
+  art -> setExits(e10);*/
+  map<int, Room*> e10;
+  e10[2] = song;
+  e10[3] = hall2;
   art -> setExits(e10);
   
+  
   //Room 11:hall1
-  map<char*, Room*> e11;
+  /*map<char*, Room*> e11;
   e11[d2] = hall2;
   e11[d4] = cell;
+  hall1 -> setExits(e11);*/
+  map<int, Room*> e11;
+  e11[2] = hall2;
+  e11[4] = cell;
   hall1 -> setExits(e11);
+
   
   //Room 12:hall2
-  map<char*, Room*> e12;
+  /*map<char*, Room*> e12;
   e12[d1] = art;
   e12[d2] = hall3;
   e12[d3] = books;
   e12[d4] = hall1;
+  hall2 -> setExits(e12);*/
+  map<int, Room*> e12;
+  e12[1] = art;
+  e12[2] = hall3;
+  e12[3] = books;
+  e12[4] = hall1;
   hall2 -> setExits(e12);
+
   
   //Room 13:hall3
-  map<char*, Room*> e13;
+  /*map<char*, Room*> e13;
   e13[d1] = song;
   e13[d2] = warden;
   e13[d3] = injury;
   e13[d4] = hall2;
+  hall3 -> setExits(e13);*/
+  map<int, Room*> e13;
+  e13[1] = song;
+  e13[2] = warden;
+  e13[3] = injury;
+  e13[4] = hall2;
   hall3 -> setExits(e13);
+
   
   //Room 14: warden
-  map<char*, Room*> e14;
+  /*map<char*, Room*> e14;
   e14[d4] = hall3;
   warden -> setExits(e14);
+  warden -> addItem(mirror);*/
+  map<int, Room*> e14;
+  e14[4] = hall3;
+  warden -> setExits(e14);
   warden -> addItem(mirror);
-  
+
   //Room 15:song
-  map<char*, Room*> e15;
+  /*map<char*, Room*> e15;
   e15[d3] = hall3;
   e15[d4] = art;
+  song -> setExits(e15);*/
+  map<int, Room*> e15;
+  e15[3] = hall3;
+  e15[4] = art;
   song -> setExits(e15);
+
   return;
+
+  
 }
 
 void roomDescription(Room* &currentRoom) {
@@ -351,10 +437,26 @@ void roomDescription(Room* &currentRoom) {
   
   cout << "There are exits:" << endl;
 
-  map<char*, Room*> curMap = currentRoom -> getExits();
+  map<int, Room*> curMap = currentRoom -> getExits();
 
-  for (map<char*, Room*>::iterator pair = curMap.begin(); pair != curMap.end(); pair++) {
-    cout << pair -> first << ", ";
+  for (map<int, Room*>::iterator pair = curMap.begin(); pair != curMap.end(); pair++) {
+    if (1 == (pair -> first)) {
+      char dir[6] = "NORTH";
+      cout << dir << ", ";
+    }
+    else if (2 == (pair->first)) {
+      char dir[5] = "EAST";
+      cout << dir << ", ";
+    }
+    else if (3 == (pair -> first)) {
+      char dir[6] = "SOUTH";
+      cout << dir << ", ";
+    }
+    else if (4 == (pair -> first)) {
+      char dir[5] = "WEST";
+      cout << dir << ", ";
+    }
+    
   }
   cout << " " << endl; 
 }
@@ -373,7 +475,6 @@ void takeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]){
 
   if (thereis == 0) {
     cout << "That item is not in the room" << endl;
-    return
   }
   else {
     currentRoom -> remItem(theItem);
@@ -381,7 +482,6 @@ void takeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]){
 
     cout << "Took " << itemName << endl;
   }
-  return;
 }
 void placeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]){
   vector<Item*> roomItems = currentRoom -> getItems();
@@ -399,23 +499,40 @@ void placeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]){
   }
   if (thereis == 0) {
     cout << "You don't have that item" << endl;
-    return
   }
   else {
     currentRoom -> addItem(theItem);
     cout << "Placed " << itemName << endl;
   }
-  return;
 }
 
 void goTo(Room* &currentRoom, char direction[10]){
-  map<char*, Room*> roomExits = currentRoom -> getExits();
+  map<int, Room*> roomExits = currentRoom -> getExits();
 
   int isThere = 0;
-  
-  for (map<char*, Room*>::iterator object = roomExits.begin(); object != roomExits.end(); object++) {
+  int dir = 0;
 
-    if (!strcmp((*object)->first,direction)) {
+  if (!strcmp("NORTH", direction)) {
+    dir = 1;
+  }
+  else if (!strcmp("EAST", direction)) {
+    dir = 2;
+  }
+  else if (!strcmp("SOUTH", direction)) {
+    dir = 3;
+  }
+  else if (!strcmp("WEST", direction)) {
+    dir = 4;
+  }
+
+  
+  for (map<int, Room*>::iterator object = roomExits.begin(); object != roomExits.end(); object++) {
+
+    //if (!strcmp(object->first,direction)) {
+    //isThere = 1;
+    //}
+
+    if (dir == (object -> first)) {
       isThere = 1;
     }
     
@@ -427,6 +544,6 @@ void goTo(Room* &currentRoom, char direction[10]){
   
   else {
     cout << "You move " << direction << endl;
-    currentRoom = roomExits[direction];
+    currentRoom = roomExits[dir];
   }
 }
