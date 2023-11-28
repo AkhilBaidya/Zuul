@@ -34,6 +34,29 @@ int main(){
     commanding = true;
     
     while (commanding) {
+
+      
+      //ending 1:
+      Room* cell = world[0];
+      vector<Item*> cellItems = cell -> getItems();
+      Room* oldest = world[1];
+      vector<Item*> oldItems = oldest -> getItems();
+
+      char n1[50] = "Name[Mine?]";
+      char n2[50] = "Knowledge";
+      char n3[50] = "Mirror[True?]";
+      char n4[50] = "Crown";
+      char n5[50] = "Apple[Rotting]";
+      
+      if (oldest -> hasItem(n1) && oldest -> hasItem(n2) && oldest -> hasItem(n3) && oldest -> hasItem(n4) && oldest -> hasItem(n5)) {
+	end(commanding, playing, 1);
+      }
+
+      //ending 2:
+      if (oldest -> hasItem(n1) && oldest -> hasItem(n2) && oldest -> hasItem(n3) && oldest -> hasItem(n4) && cell -> hasItem(n5)) {
+	end(commanding, playing, 2);
+      }
+      
       cout << "What would you like to do?" << endl;
       char command[20];
       cin >> command;
@@ -47,7 +70,6 @@ int main(){
 
 	cout << " " << endl;
       }
-
 
       //take item
       if (!strcmp("take", command)) {
@@ -560,8 +582,14 @@ void goTo(Room* &currentRoom, char direction[10]){
 void end(bool &commanding, bool &playing, int type) {
 
 
-  if (type == 1) { //dangerous end: placed all items in the oldest room
-
+  if (type == 1) { //bad end: placed all items in the oldest room
+    cout << "You feel a gust of wind from the Warden's Room" << endl;
+    cout << "No..." << endl;
+    cout << " " << endl;
+    cout << "You reach in your pockets and feel the outline of an apple." << endl;
+    cout << "Your surroundings morph and you once again find yourself in the cell" << endl;
+    cout << " " << endl;
+    cout << "You couldn't escape. Will you ever find yourself? [BAD END]" << endl;
   }
 
   if (type == 2) {//true end: place all items but apple in oldest room and apple in jail
