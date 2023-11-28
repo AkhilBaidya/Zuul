@@ -34,6 +34,7 @@ public:
   char* getDescription();
   vector<Item*> getItems();
   map<int, Room*> getExits(); //help from Mr. Galbraith for idea of making two inputs into the map a char (the direction) and another Room
+  bool hasItem(char itemTitle[50]);
 
   //set methods:
   void setTitle(char newTitle[50]);
