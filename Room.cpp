@@ -32,7 +32,7 @@ char* Room::getDescription() {
 vector<Item*> Room::getItems() {
   return items;
 }
-map<char*, Room*> Room::getExits() {
+map<int, Room*> Room::getExits() {
   return exits;
 }
 
@@ -66,7 +66,7 @@ Item* Room::remItem(Item* theItem) {
   //referred to this for syntax of .erase - https://www.geeksforgeeks.org/vector-in-cpp-stl/
 }
 
-void Room::setExits(map<char*, Room*> newExits){
+void Room::setExits(map<int, Room*> newExits){
   exits = newExits;
 }
  
