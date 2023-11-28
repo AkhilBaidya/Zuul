@@ -13,6 +13,8 @@ void roomDescription(Room* &currentRoom);
 void takeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]);
 void placeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]);
 void goTo(Room* &currentRoom, char direction[10]);
+void end(bool &commanding, bool &playing, int type);
+
 
 int main(){
   vector<Room*> world;
@@ -553,4 +555,22 @@ void goTo(Room* &currentRoom, char direction[10]){
     cout << "You move " << direction << endl;
     currentRoom = roomExits[dir];
   }
+}
+
+void end(bool &commanding, bool &playing, int type) {
+
+
+  if (type == 1) { //dangerous end: placed all items in the oldest room
+
+  }
+
+  if (type == 2) {//true end: place all items but apple in oldest room and apple in jail
+    cout << "Ah..." << endl;
+    cout << "Suddenly a weight seems to lift off your shoulders" << endl;
+    cout << "" << endl;
+    cout << "Your surroundings softly fade away, like the fog in the oldest room" << endl;
+    cout << "You are freed...[TRUE ENDING]" << endl;
+  }
+  commanding = false;
+  playing = false;
 }
