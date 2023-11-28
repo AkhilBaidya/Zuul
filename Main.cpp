@@ -21,9 +21,14 @@ int main(){
   vector<Item*> inventory;
   bool playing = true;
   bool commanding = true;
+  bool ending = false;
 
   createWorld(world); //create the rooms at the beginning
 
+  char dummy[50] = "yoyoyo";
+  char des[200] = "this hopefully works";
+  Room* dum = new Room(dummy, des);
+  delete dum;
   
   //starting area: learned that referencing value in vector is same as erray:
   //https://www.geeksforgeeks.org/vector-in-cpp-stl/
@@ -48,19 +53,22 @@ int main(){
       char n4[50] = "Crown";
       char n5[50] = "Apple[Rotting]";
       
-      if (oldest -> hasItem(n1) && oldest -> hasItem(n2) && oldest -> hasItem(n3) && oldest -> hasItem(n4) && oldest -> hasItem(n5)) {
+      if (oldest -> hasItem(n1) && oldest -> hasItem(n2) && oldest -> hasItem(n3) && oldest -> hasItem(n4) && oldest -> hasItem(n5)) { 
 	end(commanding, playing, 1);
+	ending = true; 
       }
 
       //ending 2:
       if (oldest -> hasItem(n1) && oldest -> hasItem(n2) && oldest -> hasItem(n3) && oldest -> hasItem(n4) && cell -> hasItem(n5)) {
 	end(commanding, playing, 2);
+	ending = true;
       }
-      
+
+      if (!ending) {
       cout << "What would you like to do?" << endl;
       char command[20];
       cin >> command;
-
+      
       //print inventory
       if (!strcmp("inventory", command)) {
 
@@ -110,9 +118,13 @@ int main(){
 	commanding = false;
 	playing = false;
       }
+     }
     }
   }
-  
+
+  for (vector<Room*>::iterator it = world.begin(); it != world.end(); it++){
+    delete (*it);
+  }
   cout << "Thanks for playing!" << endl;
   return 0;
 }
