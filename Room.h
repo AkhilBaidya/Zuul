@@ -40,7 +40,7 @@ public:
   void setDescription(char newDescription[200]);
   void setItems(vector<Item*> newItems);
   void addItem(Item* newItem);
-  Item* remItem(Item* theItem);
+  void remItem(char theItem[50]);
   void setExits(map<int, Room*> newExits);
   
  protected: //the fields
