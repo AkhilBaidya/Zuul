@@ -36,6 +36,18 @@ map<int, Room*> Room::getExits() {
   return exits;
 }
 
+bool Room::hasItem(char itemTitle[50]) {
+  
+  for(vector<Item*>::iterator counter = items.begin(); counter != items.end(); counter++) {
+
+    if (!strcmp(itemTitle, (*counter) -> itemTitle)) {
+      return true;
+     }
+  }
+  return false;
+
+}
+
 //set methods:
 void Room::setTitle(char newTitle[50]){
   strcpy(title, newTitle); //remember to use strcpy! not = (that caused me errors in Classes, with char* = char*)
@@ -57,20 +69,13 @@ void Room::remItem(char theItem[50]) {
   int pos = 0;
   
   for(vector<Item*>::iterator counter = items.begin(); counter != items.end(); counter++) {
-    
-    /*if (theItem == (*counter)) {
-      cout << index << endl;
-      items.erase(items.begin() + index);
-      }*/
 
     if (!strcmp(theItem, (*counter) -> itemTitle)) {
-      cout << "deleting at" << index << endl;
-      cout << "deleting " << (*counter) -> itemTitle << endl;
-      //items.erase(items.begin()+index);
+  
       pos = index;
-      cout << "did it" << endl;
+     
      }
-    cout << "turn ends" << endl;
+    
     index++;
   }
 
