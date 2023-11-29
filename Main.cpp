@@ -93,7 +93,7 @@ int main(){
       char n5[50] = "Apple[Rotting]";
 
       //If all of the Items in the game are in the "oldest" room:
-      if (oldest -> hasItem(n1) && oldest -> hasItem(n2) && oldest -> hasItem(n3) && oldest -> hasItem(n4) && oldest -> hasItem(n5))
+      if (oldest -> hasItem(n1) && oldest -> hasItem(n2) && oldest -> hasItem(n3) && oldest -> hasItem(n4) && oldest -> hasItem(n5)){
 	
 	end(commanding, playing, 1); //commence the BAD ENDING
         ending = true; //prevents the game from asking the player for another command 
@@ -484,7 +484,7 @@ void takeItem(Room* &currentRoom, vector<Item*> &inventory, char itemName[50]){
   
   vector<Item*> roomItems = currentRoom -> getItems();
   int thereis = 0;
-  Item* theITem = new Item
+  Item* theItem = new Item;
   
   //First check if the specified item is in the room:
   for (vector<Item*>::iterator item = roomItems.begin(); item != roomItems.end(); item++) {
